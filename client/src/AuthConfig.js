@@ -1,3 +1,3 @@
-export const domain = ''
-export const clientId = ''
-export const audience = ''
+export const domain = 'dev-st6p57yb.us.auth0.com'
+export const clientId = 'pS92ugKWal1eENjpAZdmdzDCL2qYG2SA'
+export const audience = 'https://kanbanapi'

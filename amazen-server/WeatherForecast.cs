@@ -1,6 +1,6 @@
 using System;
 
-namespace amazen_server
+namespace kept_server
 {
     public class WeatherForecast
     {

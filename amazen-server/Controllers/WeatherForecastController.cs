@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace amazen_server.Controllers
+namespace kept_server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
