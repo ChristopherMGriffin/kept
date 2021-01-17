@@ -16,7 +16,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
 
-namespace kept
+namespace kept_server
 {
     public class Startup
     {
