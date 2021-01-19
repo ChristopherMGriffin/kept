@@ -62,9 +62,10 @@ namespace kept_server
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "kept-server", Version = "v1" });
             });
-
+        
             // REVIEW Do you want to do something here?
-
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
+            services.AddTransient<ProfilesSer
         }
 
 
