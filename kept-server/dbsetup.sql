@@ -60,3 +60,14 @@
 -- MODIFY COLUMN views INT DEFAULT 0,
 -- MODIFY COLUMN keeps INT DEFAULT 0,
 -- MODIFY COLUMN shares INT DEFAULT 0
+-- ADD COLUMN isPublished TINYINT DEFAULT 1
+
+-- UPDATE profiles SET name = 'Kevin' WHERE id = '4f041796-e380-4297-ba5a-5181a84e1a7c'
+-- UPDATE profiles SET picture = 'https://images.pexels.com/photos/3789888/pexels-photo-3789888.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = '4f041796-e380-4297-ba5a-5181a84e1a7c'
+
+-- UPDATE profiles SET picture = 'https://images.pexels.com/photos/3777944/pexels-photo-3777944.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = '3e2ec1fd-bdfe-4cff-a154-9a718f2d2035'
+
+-- UPDATE profiles SET name = 'Rosabel' WHERE id = '78b68cdf-c6e2-458d-a031-a4dc7f98e99b'
+
+UPDATE profiles SET picture = 'https://images.pexels.com/photos/3523073/pexels-photo-3523073.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = '78b68cdf-c6e2-458d-a031-a4dc7f98e99b'
+

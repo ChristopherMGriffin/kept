@@ -13,7 +13,7 @@ namespace kept_server.Repositories
     {
       _db = db;
     }
-    public int Create(Keep newKeep)
+    internal int Create(Keep newKeep)
     {
       string sql = @"
       INSERT INTO keepstable
@@ -24,28 +24,36 @@ namespace kept_server.Repositories
       return _db.ExecuteScalar<int>(sql, newKeep);
     }
 
-    public IEnumerable<Keep> Get()
+    internal IEnumerable<Keep> Get()
     {
       string sql = "SELECT keep.*, profile.* FROM keepstable keep INNER JOIN profiles profile ON keep.creatorId = profile.id";
       return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) => { keep.Creator = profile; return keep; }, splitOn: "id");
     }
 
-    public Keep GetOne(int id)
+    internal Keep GetOne(int id)
     {
       string sql = @"UPDATE keepstable SET views = views +1 WHERE id = @Id;
       SELECT * FROM keepstable WHERE id = @Id";
       return _db.QueryFirstOrDefault<Keep>(sql, new { id });
     }
-    public Keep GetDelete(int id)
+    internal Keep GetDelete(int id)
     {
       string sql = "SELECT * FROM keepstable WHERE id = @Id";
       return _db.QueryFirstOrDefault<Keep>(sql, new { id });
     }
-    public bool Delete(int id)
+    internal bool Delete(int id)
     {
       string sql = "DELETE FROM keepstable WHERE id = @Id";
       int valid = _db.Execute(sql, new { id });
       return valid > 0;
+    }
+
+    internal IEnumerable<Keep> GetKeepsByProfile(string pId)
+    {
+      string sql = @"
+      SELECT keep.*, FROM keepstable keep JOIN profiles p ON keep.creatorId = p.id
+      WHERE keep.creatorId = @pId;";
+      return _db.Query<Keep, Profile, Keep>(sql, (keep, profile) => { keep.Creator = profile; return keep; }, new { pId }, splitOn: "id");
     }
 
   }

@@ -39,18 +39,18 @@ namespace kept_server.Controllers
       }
     }
 
-    // [HttpGet("{id}/keeps")]
-    // public async Task<ActionResult<Profile>> GetKeepsByProfile(string id)
-    // {
-    //   try
-    //   {
-    //     Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-    //     return Ok(_ks.GetKeepsByProfile(id, userInfo?.Id));
-    //   }
-    //   catch (System.Exception e)
-    //   {
-    //     return BadRequest(e.Message);
-    //   }
-
+    [HttpGet("{id}/keeps")]
+    public async Task<ActionResult<Profile>> GetKeepsByProfile(string id)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_ks.GetKeepsByProfile(id, userInfo?.Id));
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
   }
 }

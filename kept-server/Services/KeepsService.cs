@@ -29,6 +29,11 @@ namespace kept_server.Services
       return _repo.GetOne(id);
     }
 
+    public IEnumerable<Keep> GetKeepsByProfile(string pId, string uId)
+    {
+      return _repo.GetKeepsByProfile(pId).ToList().FindAll(k => k.creatorId == uId || k.isPublished);
+    }
+
     public string Delete(int id, string userId)
     {
       Keep keep = _repo.GetDelete(id);
