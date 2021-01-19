@@ -7,10 +7,16 @@ namespace kept_server.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public string Img { get; set; }
+    public string Tags { get; set; }
     public int Views { get; set; }
     public bool isPublished { get; set; }
     public int Shares { get; set; }
     public int timesKept { get; set; }
     public Profile Creator { get; set; }
+  }
+
+  public class VaultKeepViewModel : Keep
+  {
+    public int VaultKeepId { get; set; }
   }
 }

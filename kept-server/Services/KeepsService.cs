@@ -19,5 +19,32 @@ namespace kept_server.Services
       newKeep.Id = _repo.Create(newKeep);
       return newKeep;
     }
+
+    public IEnumerable<Keep> Get()
+    {
+      return _repo.Get();
+    }
+    public Keep GetOne(int id)
+    {
+      return _repo.GetOne(id);
+    }
+
+    public string Delete(int id, string userId)
+    {
+      Keep keep = _repo.GetDelete(id);
+      if (keep == null)
+      {
+        throw new Exception("Keep not found");
+      }
+      if (keep.creatorId != userId)
+      {
+        throw new Exception("Unauthorized Action");
+      }
+      if (_repo.Delete(id))
+      {
+        return "Keep Deleted";
+      }
+      return "Delete Unsuccessful";
+    }
   }
 }

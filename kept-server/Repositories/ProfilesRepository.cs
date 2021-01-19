@@ -14,10 +14,10 @@ namespace kept_server.Repositories
     {
       _db = db;
     }
-    public Profile GetByEmail(string email)
+    public Profile GetById(string id)
     {
-      string sql = "SELECT * FROM profiles WHERE email = @Email";
-      return _db.QueryFirstOrDefault<Profile>(sql, new { email });
+      string sql = "SELECT * FROM profiles WHERE id = @Id";
+      return _db.QueryFirstOrDefault<Profile>(sql, new { id });
     }
 
     internal Profile Create(Profile userInfo)
@@ -31,16 +31,16 @@ namespace kept_server.Repositories
       return userInfo;
     }
 
-    public Profile GetOneProfile(string id)
+    public Profile GetProfile(string id)
     {
       string sql = "SELECT * FROM profiles WHERE id = @Id";
       return _db.QueryFirstOrDefault<Profile>(sql, new { id });
     }
 
-    public IEnumerable<Profile> GetAllProfiles()
-    {
-      string sql = "SELECT * FROM profiles";
-      return (IEnumerable<Profile>)_db.Query(sql);
-    }
+    // public IEnumerable<Profile> GetAllProfiles()
+    // {
+    //   string sql = "SELECT * FROM profiles";
+    //   return (IEnumerable<Profile>)_db.Query(sql);
+    // }
   }
 }

@@ -23,7 +23,6 @@
 -- )
 
 
-
     -- CREATE TABLE vaults (
     --     id INT NOT NULL AUTO_INCREMENT,
     --     name VARCHAR(255) NOT NULL,
@@ -56,3 +55,8 @@
   --     ON DELETE CASCADE
 
   -- )
+
+-- ALTER TABLE keepstable
+-- MODIFY COLUMN views INT DEFAULT 0,
+-- MODIFY COLUMN keeps INT DEFAULT 0,
+-- MODIFY COLUMN shares INT DEFAULT 0

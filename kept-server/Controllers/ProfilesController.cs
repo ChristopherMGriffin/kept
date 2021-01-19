@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 namespace kept_server.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("api/[controller]")]
   public class ProfilesController : ControllerBase
   {
     private readonly ProfilesService _ps;
@@ -39,19 +39,18 @@ namespace kept_server.Controllers
       }
     }
 
-    [HttpGet("{id}/blogs")]
-    public async Task<ActionResult<Profile>> GetBlogsByProfile(string id)
-    {
-      try
-      {
-        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-        return Ok(_bs.GetBlogsByProfile(id, userInfo?.Id));
-      }
-      catch (System.Exception e)
-      {
-        return BadRequest(e.Message);
-      }
+    // [HttpGet("{id}/keeps")]
+    // public async Task<ActionResult<Profile>> GetKeepsByProfile(string id)
+    // {
+    //   try
+    //   {
+    //     Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+    //     return Ok(_ks.GetKeepsByProfile(id, userInfo?.Id));
+    //   }
+    //   catch (System.Exception e)
+    //   {
+    //     return BadRequest(e.Message);
+    //   }
 
-    }
   }
 }

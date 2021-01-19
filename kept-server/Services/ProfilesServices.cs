@@ -16,7 +16,7 @@ namespace kept_server.Services
   
     public Profile GetOrCreateProfile(Profile userInfo)
     {
-      Profile foundProfile = _repo.GetOneProfile(userInfo.Id);
+      Profile foundProfile = _repo.GetById(userInfo.Id);
       if (foundProfile == null)
       {
         return _repo.Create(userInfo);
@@ -24,9 +24,9 @@ namespace kept_server.Services
       return foundProfile;
     }
 
-    public Profile GetOneProfile(string id)
-    {
-      return _repo.GetOneProfile(id);
-    }
+    // public Profile GetOneProfile(string id)
+    // {
+    //   return _repo.GetOneProfile(id);
+    // }
   }
 }

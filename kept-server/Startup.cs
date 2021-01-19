@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MySqlConnector;
+using kept_server.Services;
+using kept_server.Repositories;
 
 namespace kept_server
 {
@@ -65,7 +67,11 @@ namespace kept_server
         
             // REVIEW Do you want to do something here?
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
-            services.AddTransient<ProfilesSer
+            services.AddTransient<ProfilesService>();
+            services.AddTransient<ProfilesRepository>();
+            services.AddTransient<KeepsService>();
+            services.AddTransient<KeepsRepository>();
+
         }
 
 
