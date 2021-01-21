@@ -69,5 +69,10 @@
 
 -- UPDATE profiles SET name = 'Rosabel' WHERE id = '78b68cdf-c6e2-458d-a031-a4dc7f98e99b'
 
-UPDATE profiles SET picture = 'https://images.pexels.com/photos/3523073/pexels-photo-3523073.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = '78b68cdf-c6e2-458d-a031-a4dc7f98e99b'
+-- UPDATE profiles SET picture = 'https://images.pexels.com/photos/3523073/pexels-photo-3523073.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = '78b68cdf-c6e2-458d-a031-a4dc7f98e99b'
+
+-- UPDATE profiles SET picture = 'https://images.pexels.com/photos/1170261/pexels-photo-1170261.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' WHERE id = 'ffd09420-6742-4589-9001-b8bd89f43ec1'
+
+-- UPDATE profiles SET name = 'Leo' WHERE id = 'ffd09420-6742-4589-9001-b8bd89f43ec1'
+
 

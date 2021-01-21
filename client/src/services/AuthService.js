@@ -20,7 +20,7 @@ export const AuthService = initialize({
 
 AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   setBearer(AuthService.bearer)
-  await profileService.getProfile()
+  await profileService.getUserProfile()
   AppState.user = AuthService.user
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })

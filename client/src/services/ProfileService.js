@@ -3,10 +3,11 @@ import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
 
 class ProfileService {
-  async getProfile() {
+  async getUserProfile() {
     try {
-      const res = await api.get('/profile')
-      AppState.profile = res.data
+      const res = await api.get('api/profiles')
+      AppState.userProfile = res.data
+      logger.log(AppState.userProfile)
     } catch (err) {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
