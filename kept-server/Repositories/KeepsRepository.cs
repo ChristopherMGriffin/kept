@@ -41,11 +41,30 @@ namespace kept_server.Repositories
       string sql = "SELECT * FROM keepstable WHERE id = @Id";
       return _db.QueryFirstOrDefault<Keep>(sql, new { id });
     }
+
+    internal Keep GetEdit(int id)
+    {
+      string sql = "SELECT * FROM keepstable WHERE id = @id";
+      return _db.QueryFirstOrDefault(sql, new { id });
+    }
+
     internal bool Delete(int id)
     {
       string sql = "DELETE FROM keepstable WHERE id = @Id";
       int valid = _db.Execute(sql, new { id });
       return valid > 0;
+    }
+
+    internal void Edit(Keep editData)
+    {
+      string sql = @"
+      UPDATE keepstable
+      SET
+      description = @Description,
+      name = @Name,
+      img = @Img,
+      WHERE id = @Id;";
+        _db.Execute(sql, editData); 
     }
 
     internal IEnumerable<Keep> GetKeepsByProfile(string pId)

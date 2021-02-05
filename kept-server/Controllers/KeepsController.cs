@@ -29,15 +29,15 @@ namespace kept_server.Controllers
     {
       try
       {
-          Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
-          newKeep.creatorId = userInfo.Id;
-          Keep created = _ks.Create(newKeep);
-          created.Creator = userInfo;
-          return Ok(created);
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        newKeep.creatorId = userInfo.Id;
+        Keep created = _ks.Create(newKeep);
+        created.Creator = userInfo;
+        return Ok(created);
       }
       catch (System.Exception e)
       {
-          
+
         return BadRequest(e.Message);
       }
     }
@@ -47,11 +47,11 @@ namespace kept_server.Controllers
     {
       try
       {
-          return Ok(_ks.Get());
+        return Ok(_ks.Get());
       }
       catch (System.Exception e)
       {
-          
+
         return BadRequest(e.Message);
       }
     }
@@ -61,11 +61,11 @@ namespace kept_server.Controllers
     {
       try
       {
-          return Ok(_ks.GetOne(id));
+        return Ok(_ks.GetOne(id));
       }
       catch (System.Exception e)
       {
-          
+
         return BadRequest(e.Message);
       }
     }
@@ -82,7 +82,23 @@ namespace kept_server.Controllers
       }
       catch (System.Exception e)
       {
-          
+
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<ActionResult<Keep>> Edit(int id, [FromBody] Keep editData)
+    {
+      try
+      {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        editData.Id = id;
+        return Ok(_ks.Edit(editData, userInfo.Id));
+      }
+      catch (System.Exception e)
+      {
         return BadRequest(e.Message);
       }
     }

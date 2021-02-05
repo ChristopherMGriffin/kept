@@ -51,5 +51,20 @@ namespace kept_server.Services
       }
       return "Delete Unsuccessful";
     }
+
+    internal Keep Edit(Keep editData, string userId)
+    {
+      Keep original = _repo.GetEdit(editData.Id);
+      if(original == null)
+      {
+        throw new Exception("Not Found");
+      }
+      if(original.creatorId != userId)
+      {
+        throw new Exception("Unauthorized");
+      }
+      _repo.Edit(editData);
+      return _repo.GetEdit(editData.Id);
+    }
   }
 }
